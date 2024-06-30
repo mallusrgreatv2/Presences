@@ -46,6 +46,7 @@ presence.on("UpdateData", async () => {
 				),
 				coverArt =
 					document.querySelector<HTMLImageElement>("#w-info img")?.src ??
+					document.querySelector("img[itemprop=image]")?.getAttribute("src") ??
 					document
 						.querySelector('[class="anime-poster"]')
 						?.querySelector("img")
@@ -66,7 +67,7 @@ presence.on("UpdateData", async () => {
 						.querySelector("#w-servers .tip > div > b")
 						?.textContent?.match(/[1-9]{1}[0-9]{0,}/)?.[0] ??
 					document
-						.querySelector('a[class*="active"]')
+						.querySelector("a[class=active]")
 						?.textContent?.match(/[1-9]{1}[0-9]{0,}/)?.[0] ??
 					document
 						.querySelector('[class="item ep-item active"]')
@@ -79,6 +80,7 @@ presence.on("UpdateData", async () => {
 				document.querySelector("#w-info .title")?.textContent ??
 				document.querySelector('[class="film-name dynamic-name"]')
 					?.textContent ??
+				document.querySelector("h1.title")?.textContent ??
 				document.querySelector('[class="title"]')?.textContent ??
 				"Undefined";
 			presenceData.state =
