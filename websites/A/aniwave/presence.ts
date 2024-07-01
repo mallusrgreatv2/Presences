@@ -40,6 +40,7 @@ presence.on("UpdateData", async () => {
 	switch (true) {
 		case pathname.includes("/watch/"):
 		case video.exists: {
+			presenceData.type = ActivityType.Watching;
 			const [startTimestamp, endTimestamp] = presence.getTimestamps(
 					Math.floor(video.currentTime),
 					Math.floor(video.duration)
@@ -131,6 +132,7 @@ presence.on("UpdateData", async () => {
 		}
 
 		case pathname.includes("/watch2gether/room/"): {
+			presenceData.type = ActivityType.Playing;
 			const coverArt =
 				document.querySelector<HTMLImageElement>(".anime-info img")?.src;
 
